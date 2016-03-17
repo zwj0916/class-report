@@ -1,0 +1,82 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="ECharts">
+    <meta name="author" content="kener.linfeng@gmail.com">
+    <title>ECharts  Example</title>
+
+</head>
+
+<body>
+    <!-- Fixed navbar -->
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation" id="head"></div>
+
+    <div class="container featurette">
+        <div class="row">
+            <div id="graphic" class="col-md-12">
+                <div id="main" style="height:400px;width:600px"></div>
+            </div><!--/span-->
+        </div><!--/row-->
+    </div><!--/.fluid-container-->
+
+    <footer id="footer"></footer>
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="../js/jquery.min.js"></script>
+	<script src="../js/echarts.js"></script>
+    <script type="text/javascript">
+        
+        
+        var option = {
+            tooltip : {
+                trigger: 'axis'
+            },
+            legend: {
+                data:['视频观看完成度各范围人数']
+            },
+            toolbox: {
+                show : true,
+                feature : {
+                    //mark : {show: true},
+                    dataView : {show: true, readOnly: false}
+                    //magicType : {show: true, type: ['line', 'bar']},
+                    //restore : {show: true},
+                    //saveAsImage : {show: true}
+                }
+            },
+            calculable : true,
+            xAxis : [
+                {
+                    type : 'category',
+                    data : ['90%-100%','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月']
+                }
+            ],
+            yAxis : [
+                {
+                    type : 'value',
+                    splitArea : {show : true}
+                }
+            ],
+            series : [
+                {
+                    name:'视频观看完成度各范围人数',
+                    type:'bar',
+                    data:[2.0, 4.9, 7.0, 23.2, 25.6, 76.7, 135.6, 162.2, 32.6, 20.0, 6.4, 3.3]
+                }
+            ]
+        };
+        
+        $(function(){
+				var myChart = echarts.init(document.getElementById('main'));
+                myChart.setOption(option);
+		});
+        
+				
+    </script>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <script type="text/javascript" src="http://img.hcharts.cn/jquery/jquery-1.8.3.min.js"></script>
+		<script type="text/javascript" src="http://img.hcharts.cn/highcharts/highcharts.js"></script>
+		<script type="text/javascript" src="http://img.hcharts.cn/highcharts/modules/exporting.js"></script>
+  <script>
+    //左侧Javascript代码
+  </script>
+</head>
+<body>
+  <div id="container" style="width:550px;height:400px"></div>
+  <script type="text/javascript">
+  $(function () {                                                                
+	    $('#container').highcharts({                                           
+	        chart: {                                                           
+	            type: 'bar'                                                    
+	        },                                                                 
+	        title: {                                                           
+	            text: '各部分的得分与总分'                    
+	        },                                                                 
+	        subtitle: {                                                        
+	            text: ''                                  
+	        },                                                                 
+	        xAxis: {                                                           
+	            categories: ['总成绩', '作业', '讨论', '测验', '观看视频'],
+	            title: {                                                       
+	                text: null                                                 
+	            }                                                              
+	        },                                                                 
+	        yAxis: {                                                           
+	            min: 0,                                                        
+	            title: {                                                       
+	                text: '',                             
+	                align: 'high'                                              
+	            },                                                             
+	            labels: {                                                      
+	                overflow: 'justify'                                        
+	            }                                                              
+	        },                                                                 
+	        tooltip: {                                                  
+	            valueSuffix: ' millions'                                       
+	        },                                                                 
+	        plotOptions: {                                                     
+	            bar: {                                                         
+	                dataLabels: {                                              
+	                    enabled: true                                          
+	                }                                                          
+	            }                                                              
+	        },                                                                 
+	        legend: {                                                          
+	            layout: 'vertical',                                            
+	            align: 'right',                                                
+	            verticalAlign: 'top',                                          
+	            x: -40,                                                        
+	            y: 100,                                                        
+	            floating: true,                                                
+	            borderWidth: 1,                                                
+	            backgroundColor: '#FFFFFF',                                    
+	            shadow: true                                                   
+	        },                                                                 
+	        credits: {                                                         
+	            enabled: false                                                 
+	        },                                                                 
+	        series: [{                                                         
+	            name: '平均分',                                             
+	            data: [90, 8, 6, 7, 55]                                   
+	        }, {                                                               
+	            name: '总分',                                             
+	            data: [100, 10, 15, 15, 60]                                  
+	        }]                                                                 
+	    });                                                                    
+	});                                                                                                                                              				
+  </script>
+</body>
+</html>

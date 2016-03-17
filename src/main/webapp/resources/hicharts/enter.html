@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <script type="text/javascript" src="http://img.hcharts.cn/jquery/jquery-1.8.3.min.js"></script>
+		<script type="text/javascript" src="http://img.hcharts.cn/highcharts/highcharts.js"></script>
+		<script type="text/javascript" src="http://img.hcharts.cn/highcharts/modules/exporting.js"></script>
+  <script>
+    //左侧Javascript代码
+  </script>
+</head>
+<body>输入逗号分隔的数据然后点刷新<br/>
+  日期：<textarea rows="" cols="100" id="date" >
+  2015-01-01,2015-01-02,2015-01-03,2015-01-04,2015-01-05,2015-01-06,2015-01-07,2015-01-08,2015-01-09,2015-01-10,2015-01-11,2015-01-12
+  </textarea><br/>
+  人数：<textarea rows="" cols="100" id="count">
+  7, 6, 9, 14, 18, 21, 25, 26, 23, 18, 13, 9
+  </textarea>
+  <input type="button"  value="刷新" onclick="refresh()"/>
+  <div id="container" style="width:550px;height:400px"></div>
+  <script type="text/javascript">
+  function refresh(){
+	  var date = $.trim($('#date').val()).replace(/\s+/g, "");
+	  var count = $.trim($('#count').val()).replace(/\s+/g, "");
+	  var dateArray = date.split(/[\s+|',']/);
+	  var countArrayStr = count.split(/[\s+|',']/);
+	  var countArray = new Array();
+	  for(var i = 0 ;i < countArrayStr.length ;i++){
+		  countArray.push(parseInt(countArrayStr[i]));
+	  }
+	  load(dateArray,countArray);
+  }
+  function load(dateArray,countArray) {
+	    $('#container').highcharts({
+	        chart: {
+	            type: 'line'
+	        },
+	        title: {
+	            text: '进入平台的学生'
+	        },
+	        subtitle: {
+	            text: ''
+	        },
+	        xAxis: {
+	            categories: dateArray,
+	            labels:{
+	            	rotation:-45
+	        	}
+	        },
+	        yAxis: {
+	            title: {
+	                text: '人数'
+	            }
+	        },
+	        exporting: {
+	            enabled: true
+	        },
+	        tooltip: {
+	            enabled: true,
+	            formatter: function() {
+	                return '<b>'+ this.series.name +'</b><br/>'+this.x +': '+ this.y +'°C';
+	            }
+	        },
+	        legend: {
+	            enabled: false
+	        },
+	        plotOptions: {
+	            line: {
+	                dataLabels: {
+	                    enabled: true
+	                },
+	                enableMouseTracking: false
+	            }
+	        },
+	        series: [{
+	            name: '',
+	            data: countArray
+	        }]
+	    });
+	}	
+  </script>
+</body>
+</html>

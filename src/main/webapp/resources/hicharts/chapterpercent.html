@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+<script type="text/javascript" src="http://img.hcharts.cn/jquery/jquery-1.8.3.min.js"></script>
+		<script type="text/javascript" src="http://img.hcharts.cn/highcharts/highcharts.js"></script>
+		<script type="text/javascript" src="http://img.hcharts.cn/highcharts/modules/exporting.js"></script>
+  
+  <script>
+    //左侧Javascript代码
+  </script>
+</head>
+<body>输入逗号分隔的数据然后点刷新<br/>
+  章节：<textarea rows="" cols="100" id="date" >
+  第一章,第二章,第三章,第四章,第五章,第六章
+  </textarea><br/>
+  进度：<textarea rows="" cols="100" id="count">
+7.0, 6.9, 9.5, 14.5, 18.4, 21.5
+  </textarea>
+  <input type="button"  value="刷新" onclick="refresh()"/>
+  <div id="container" style="width:550px;height:400px"></div>
+  <script type="text/javascript">
+  function refresh(){
+	  var date = $.trim($('#date').val()).replace(/\s+/g, "");
+	  var count = $.trim($('#count').val()).replace(/\s+/g, "");
+	  var dateArray = date.split(/[\s+|',']/);
+	  var countArrayStr = count.split(/[\s+|',']/);
+	  var countArray = new Array();
+	  for(var i = 0 ;i < countArrayStr.length ;i++){
+		  countArray.push(parseInt(countArrayStr[i]));
+	  }
+	  load(dateArray,countArray);
+  }
+  function load(dateArray,countArray) {
+	    $('#container').highcharts({
+	        chart: {
+	            type: 'line'
+	        },
+	        title: {
+	            text: '课程各章节视频观看完成情况'
+	        },
+	        subtitle: {
+	            text: ''
+	        },
+	        xAxis: {
+	            categories: dateArray,
+	            labels:{
+	            	rotation:-45
+	        	}
+	        },
+	        yAxis: {
+	            title: {
+	                text: '百分比'
+	            },
+	            labels:{
+	            	rotation:-45,
+	            	format: '<b>{value} %'
+	        	}
+	        },
+	        exporting: {
+	            enabled: true
+	        },
+	        tooltip: {
+	            enabled: true,
+	            formatter: function() {
+	                return '<b>'+ this.series.name +'</b><br/>'+this.x +': '+ this.y +'°C';
+	            }
+	        },
+	        legend: {
+	            enabled: false
+	        },
+	        plotOptions: {
+	            line: {
+	                dataLabels: {
+	                    enabled: true,
+	                    format: '<b>{point.y:.1f} %',
+	                },
+	                enableMouseTracking: false,
+	            }
+	        },
+	        series: [{
+	            name: '',
+	            data: countArray
+	        }]
+	    });
+	}
+  </script>
+</body>
+</html>

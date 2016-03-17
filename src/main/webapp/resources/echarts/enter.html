@@ -1,0 +1,116 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="ECharts">
+    <meta name="author" content="kener.linfeng@gmail.com">
+    <title>ECharts  Example</title>
+
+</head>
+
+<body>
+    <!-- Fixed navbar -->
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation" id="head"></div>
+
+    <div class="container featurette">
+        <div class="row">
+            <div id="graphic" class="col-md-12">
+                <div id="main" style="height:400px;width:600px"></div>
+            </div><!--/span-->
+        </div><!--/row-->
+    </div><!--/.fluid-container-->
+
+    <footer id="footer"></footer>
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="../js/jquery.min.js"></script>
+	<script src="../js/echarts.js"></script>
+    <script type="text/javascript">
+    var ix = 0 ;
+    function randomData() {
+        now = new Date(+now + oneDay);
+        value = value + Math.random() * 21 - 10;
+        return {
+            name: now.toString(),
+            value: [
+                ix++,
+                Math.round(value)
+            ]
+        }
+    }
+
+    var data = [];
+    var now = +new Date(1997, 9, 3);
+    var oneDay = 24 * 3600 * 1000;
+    var value = Math.random() * 1000;
+    for (var i = 0; i < 10; i++) {
+        data.push(randomData());
+    }
+
+    option = {
+        title: {
+            text: '进入平台的学生'
+        },
+        tooltip: {
+            trigger: 'axis',
+            formatter: function (params) {
+                return params[0].data.value[0];
+            },
+            axisPointer: {
+                animation: true
+            }
+        },
+        xAxis: {
+            type: 'value',
+            splitLine: {
+                show: false
+            },
+            axisLabel: {
+            	interval:0,
+            	show: true,
+            	rotate :45
+            }
+        },
+        yAxis: {
+            type: 'value',
+            boundaryGap: [0, '100%'],
+            splitLine: {
+                show: true
+            },
+            splitArea: { show: true }
+            
+        },
+        series: [{
+            name: '模拟数据',
+            type: 'line',
+            showSymbol: true,
+            hoverAnimation: true,
+            data: data, 
+            itemStyle: {
+                normal: {
+                    label: {
+                        show: true,
+                        textStyle: {
+                            color: '#800080'
+                        }
+                    },
+                    color: 'blue'
+                }
+            }
+        }]
+    };
+
+        
+    $(function(){
+		var myChart = echarts.init(document.getElementById('main'));
+		myChart.setOption(option);
+	});
+        
+				
+    </script>
+</body>
+</html>
