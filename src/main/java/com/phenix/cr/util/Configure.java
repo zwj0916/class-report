@@ -14,7 +14,7 @@ import org.springframework.util.StringUtils;
  * 配置文件
  */
 final public class Configure {
-	public static final String DEFAULT_CONFIG_TYPE = "BIBOX";
+	public static final String DEFAULT_CONFIG_TYPE = "CR";
 	private static Configure configure = new Configure();
 	private static Map<String, Object> modifiedTimeMap = new HashMap<String, Object>();
 	private static Map<String, Object> fileNameMap = new HashMap<String, Object>();

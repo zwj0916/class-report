@@ -19,7 +19,7 @@ public class Const {
 	/**
 	 * 数据库JNDI
 	 */
-	public static final String BIBOX_JNDI_NAME = "BIBOX_JNDI_NAME";
+	public static final String CR_JNDI_NAME = "CR_JNDI_NAME";
 
 	/**
 	 * CAS相关参数
@@ -31,7 +31,7 @@ public class Const {
 	 */
 	public static final String SERVICE_KEY = "SERVICE";
 
-	public static final String BIBOX_USER_SESSION_KEY = "bi_user";
+	public static final String CR_USER_SESSION_KEY = "bi_user";
 
 	public static final String LOGOUT_URL = "LOGOUT_URL";
 

@@ -12,7 +12,7 @@ public interface UserRightDao {
      * 获取用户信息
      * @author ZhaiWeijin
      * @param userName 用户名
-     * @return 用户信息（Biadmin）
+     * @return 用户信息（Bi）
      * @Date Mar 4, 2014
      */
     User findUser(String userName);

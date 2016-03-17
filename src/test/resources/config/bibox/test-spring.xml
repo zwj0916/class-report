@@ -24,7 +24,7 @@
 		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
 	</context:component-scan>
 	
-	<bean id="biboxDataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+	<bean id="cfDataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
 		<property name="driverClassName">
 			<value>oracle.jdbc.driver.OracleDriver</value>
 		</property>
@@ -38,35 +38,35 @@
 			<value>##</value>
 		</property>
 	</bean>
-	<bean id="biadminDataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+	<bean id="cf2DataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
 		<property name="driverClassName">
 			<value>oracle.jdbc.driver.OracleDriver</value>
 		</property>
 		<property name="url"> 
-			<value>jdbc:oracle:thin:@10.44.87.60:8521/BIADMIN1</value>
+			<value></value>
 		</property>
 		<property name="username">
-			<value>bisecurity</value>
+			<value></value>
 		</property>
 		<property name="password">
-			<value>bisecurity</value>
+			<value></value>
 		</property>
 	</bean>
-	<bean id="biboxJdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+	<bean id="crwebJdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
 		<property name="dataSource">
-			<ref bean="biboxDataSource" />
+			<ref bean="cfDataSource" />
 		</property>
 	</bean>
 	
-	<bean id="biadminJdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+	<bean id="crweb2JdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
 		<property name="dataSource">
-			<ref bean="biadminDataSource" />
+			<ref bean="cf2DataSource" />
 		</property>
 	</bean>
 	
 	<bean id="transactionManager"  
 		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-		<property name="dataSource" ref="biboxDataSource" />
+		<property name="dataSource" ref="cfDataSource" />
 	</bean>
 	
 	<tx:annotation-driven transaction-manager="transactionManager" />

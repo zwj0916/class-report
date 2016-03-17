@@ -14,7 +14,7 @@ public interface UserRightService {
 	 * @author ZhaiWeijin
 	 * @param userName
 	 *            用户名
-	 * @return 员工个人信息（Biadmin）
+	 * @return 员工个人信息（Bi）
 	 */
 	User findByUserName(String userName);
 

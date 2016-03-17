@@ -26,13 +26,13 @@
 	
 	<jee:jndi-lookup id="cfDataSource" jndi-name="${JNDI_CF}" />
 	
-	<bean id="biboxJdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+	<bean id="crwebJdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
 		<property name="dataSource">
 			<ref bean="cfDataSource" />
 		</property>
 	</bean>
 	
-	<bean id="biadminJdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+	<bean id="crweb2JdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
 		<property name="dataSource">
 			<ref bean="cfDataSource" />
 		</property>

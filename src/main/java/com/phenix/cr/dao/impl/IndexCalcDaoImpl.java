@@ -15,7 +15,7 @@ import com.phenix.cr.dao.IndexCalcDao;
 
 @Repository
 public class IndexCalcDaoImpl extends BaseDao implements IndexCalcDao {
-	@Resource(name = "biboxJdbcTemplate")
+	@Resource(name = "crwebJdbcTemplate")
 	private JdbcTemplate jdbcTemplate;
 
 	public <T> T calc(String str, Map<String, Object> params, Class<T> cls) {

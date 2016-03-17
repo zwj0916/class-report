@@ -23,7 +23,7 @@ public class UserRightDaoImpl extends BaseDao implements UserRightDao {
 	private static final Logger logger = LoggerFactory
 			.getLogger(UserRightDaoImpl.class);
 
-	@Resource(name = "biadminJdbcTemplate")
+	@Resource(name = "crweb2JdbcTemplate")
 	private JdbcTemplate jdbcTemplate;
 
 	protected JdbcTemplate getJdbcTemplate() {
